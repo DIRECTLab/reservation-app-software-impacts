@@ -1,0 +1,92 @@
+// import axios, { AxiosError, AxiosResponse } from 'axios';
+// import ResponseBase from "../types/ResponseBase";
+// import { Type } from "typescript";
+
+// const methods = {
+//   get: 'get',
+//   post: 'post',
+//   patch: 'patch',
+//   delete: 'delete'
+// };
+
+// interface Temp extends Type {
+//   ooga: string
+// }
+
+// const uno: Temp = {
+//   ooga: ''
+// }
+
+// const requestGenerator = (getBase: () => string) => (method: string, uri: string, _: Type) => (data = {}, authorization = null) => {
+//   let requestPromise;
+//   switch (method) {
+//     case methods.get:
+//       requestPromise = axios.get<Type>(`${getBase()}/${uri}`, {...data, headers: { authorization } });
+//       break;
+//     case methods.post:
+//       requestPromise = axios['post'](`${getBase()}/${uri}`, {...data}, {headers: {authorization: authorization}});
+//       break;
+//     case methods.patch:
+//       requestPromise = axios['patch'](`${getBase()}/${uri}`, {...data}, {headers: {authorization: authorization}});
+//       break;
+//     case methods.delete:
+//       requestPromise = axios['delete'](`${getBase()}/${uri}`, {headers: {authorization}});
+//       break;
+//     default:
+//       requestPromise = axios['get'](`${getBase()}/${uri}`)
+//       break;
+
+//   }
+//   return requestPromise
+//   .then(({data}) => data)
+//   .catch(e => e.response.data);
+// }
+
+// const reqUrl = (url: string) => {
+//   return `${getApiBase()}/${url}`;
+// };
+
+// const getObj = (params: any, authorization: string | null) => {
+//   return { params, headers: { authorization } }
+// }
+
+// // const api_2 = {
+// //   reservation: (userId: number) => ({
+// //     getCurrent: () => axios.get<ResponseBase>(reqUrl('reservation'), getObj({ UserId: userId, startDate: new Date(), all: true }, null)),
+// //   }),
+// // }
+
+// const getApiBase = () => 'http://localhost:11236' // Development
+// // const getApiBase = () => 'http://129.123.202.136:11236' // Production
+// const r = requestGenerator(getApiBase);
+
+// const api = {
+//   // getChargers: r('get', 'charger'),
+//   // charger: {
+//   //   getOptimalChargeRange: r('get', 'charger/optimal-range'),
+//   //   getCost: r('get', 'charger/cost'),
+//   // },
+//   reservation: (userId: number) => ({
+//     // getAll: r('get', `reservation?UserId=${userId}&all=true`),
+//     getCurrent: r('get', `reservation/current?UserId=${userId}&startDate=${new Date()}&all=true`, uno),
+//     // getUpcoming: r('get', `reservation?UserId=${userId}&upcoming=true`),
+//     // reserve: r('post', `reservation`),
+//     // delete: r('delete', `reservation?id=${userId}`),
+//   }),
+//   // getChargerReservations: (chargerId: number, date: string) => ({ 
+//   //   getAll: r('get', `reservation/reserved_times?chargerId=${chargerId}&date=${date}`) 
+//   // }),
+//   // createUser: r('post', `user`),
+//   // login: r('post', `user/login`),
+//   // user: (userId: number) => ({
+//   //   getUser: r('get', `user?id=${userId}`),
+//   //   spendTokens: r('patch', `user/spend-tokens`),
+//   // }),
+//   // favorites: {
+//   //   get: r('get', 'favorite'),
+//   //   add: r('post', 'favorite'),
+//   //   remove: r('delete', 'favorite'),
+//   // },
+//   // createCheckoutSession: r('post', 'token/create-checkout-session'),
+// }
+// export default api
